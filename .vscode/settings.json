@@ -1,0 +1,26 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "reactSnippets.settings.prettierEnabled": true,
+  "prettier.configPath": ".prettierrc",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown",
+    "css"
+  ],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown",
+    "css"
+  ]
+}
