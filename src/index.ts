@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import "dotenv/config";
-import { connectToDB } from "./utils/db";
 import { authRouter } from "./routes/auth.router";
 
 const app = express();
