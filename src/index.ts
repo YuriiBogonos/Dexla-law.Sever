@@ -21,7 +21,7 @@ app.set("trust proxy", true);
 
 app.use(authRouter);
 
-connectToDB();
+// connectToDB();
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
