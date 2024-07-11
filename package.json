@@ -1,5 +1,5 @@
 {
-  "name": "therapist_back",
+  "name": "dexla-law",
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
@@ -10,6 +10,9 @@
     "format": "prettier . --write",
     "check": "branch-name-lint branch-lint.json",
     "prepare": "husky"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   },
   "keywords": [],
   "author": "",
