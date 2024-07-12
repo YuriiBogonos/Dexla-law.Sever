@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-    "start": "npm run build && nodemon ./dist/index.js",
+    "start": "npm run build && node ./dist/index.js",
     "dev": "nodemon ./src/index.ts",
     "build": "npx tsc",
     "lint": "eslint . --fix --max-warnings 0",
     "format": "prettier . --write",
     "check": "branch-name-lint branch-lint.json",
-    "prepare": "husky"
+    "prepare": "husky",
+    "start:prod": "node dist/index.js"
   },
   "engines": {
     "node": ">=20.0.0"
