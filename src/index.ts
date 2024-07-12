@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { connectToDB } from "./utils/db";
 import cookieParser from "cookie-parser";
 import "dotenv/config";
 import { authRouter } from "./routes/auth.router";
@@ -20,7 +21,7 @@ app.set("trust proxy", true);
 
 app.use(authRouter);
 
-// connectToDB();
+connectToDB();
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
