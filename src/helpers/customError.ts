@@ -56,3 +56,12 @@ export const sendResposeMessage = (
   res.status(statusCode);
   res.json({ message });
 };
+
+export const sendResponseData = <T>(
+  res: Response,
+  data: T,
+  statusCode: number,
+) => {
+  res.status(statusCode);
+  res.json(data);
+};

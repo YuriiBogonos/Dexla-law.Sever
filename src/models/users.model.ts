@@ -33,7 +33,7 @@ const userSchema = new Schema<IUser>(
 );
 
 // Middleware to add a default folder
-userSchema.pre<IUser>("save", async function (next) {
+userSchema.pre<IUser>("save", async function(next) {
   if (this.isNew) {
     try {
       console.log("Creating default folder for new user...");

@@ -1,4 +1,4 @@
-import { Users } from "../models/users.model";
+import { INormalizedUser, Users } from "../models/users.model";
 import { User } from "../types/user";
 
 const createUser = async (user: User): Promise<[User | null, boolean]> => {
@@ -17,7 +17,7 @@ const createUser = async (user: User): Promise<[User | null, boolean]> => {
   }
 };
 
-const normalize = (user: User & { _id: string }) => {
+const normalize = (user: User & { _id: string }): INormalizedUser => {
   return {
     id: user._id,
     firstName: user.firstName,

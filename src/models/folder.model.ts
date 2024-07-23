@@ -8,8 +8,8 @@ export interface IFolder extends Document {
 }
 
 const folderSchema = new Schema<IFolder>({
-  isDefaultFolder: { type: Boolean, required: true },
   name: { type: String, required: true },
+  isDefaultFolder: { type: Boolean, required: true, default: false },
   files: { type: [Schema.Types.ObjectId], ref: "File", default: [] },
 });
 
