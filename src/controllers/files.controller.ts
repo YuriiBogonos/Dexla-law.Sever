@@ -12,6 +12,7 @@ import multer from "multer";
 import { Request } from "express";
 
 const upload = multer();
+const email = "ubogonos2003@gmail.com";
 
 const uploadFile = async (req: Request, res: Response) => {
   if (!req.file) {
@@ -24,7 +25,7 @@ const uploadFile = async (req: Request, res: Response) => {
 
   try {
     const fileUrl = await uploadFileToS3(req.file);
-    await saveFileToBd(req.file.originalname, req.file.mimetype, fileUrl, req.body.userEmail);
+    await saveFileToBd(req.file.originalname, req.file.mimetype, fileUrl, email); // todo change to req.body.userEmail
     return sendResposeMessage(res, "success", 200);
   } catch (error) {
     return sendResposeMessage(res, "File upload failed", 500);
@@ -44,9 +45,9 @@ const uploadFolder = async (req: Request, res: Response) => {
   }
 
   try {
-    const folder = await createFolder(folderName, req.body.userEmail);
+    const folder = await createFolder(folderName, email); // todo change to req.body.userEmail
     const fileUrls = await uploadFilesToS3(req.files);
-    await saveFilesToBd(req.files, fileUrls, <string>folder._id, req.body.userEmail);
+    await saveFilesToBd(req.files, fileUrls, <string>folder._id, email); // todo change to req.body.userEmail
     return sendResposeMessage(res, "success", 200);
   } catch (error) {
     return sendResposeMessage(res, "Folder upload failed", 500);
@@ -68,7 +69,7 @@ const uploadFileByUrl = async (req: Request, res: Response) => {
     }
 
     const s3Url = await uploadFileToS3({ originalname: filename, mimetype, buffer });
-    await saveFileToBd(filename, mimetype, s3Url, req.body.userEmail);
+    await saveFileToBd(filename, mimetype, s3Url, email); // todo change to req.body.userEmail
     return sendResposeMessage(res, "success", 200);
   } catch (error) {
     return sendResposeMessage(res, "File upload by URL failed", 500);

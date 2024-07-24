@@ -99,9 +99,12 @@ export const saveFileToBd = async (
     throw new Error("User not found");
   }
 
+  const folderIds = user.folders.map(folder => folder._id);
+  const folders = await Folder.find({ _id: { $in: folderIds } });
   const defaultFolder = await Folder.findOne({
-    _id: user.folders.find(folder => folder.isDefaultFolder)?._id,
+    _id: folders.find(folder => folder.isDefaultFolder)?._id,
   });
+
   if (defaultFolder) {
     defaultFolder.files.push(newFile);
     await defaultFolder.save();
@@ -153,5 +156,8 @@ export const downloadFile = async (fileUrl: string) => {
   const extension = mime.extension(contentType);
   const filename = `downloaded-file.${extension}`;
 
-  return { filename, mimetype: contentType, buffer };
+  return {
+    filename, buffer,
+    mimetype: contentType.split(";")[0],
+  };
 };
